@@ -6,11 +6,7 @@
         public AddContact()
         {
             InitializeComponent();
-        }
-
-        private void SaveContact(object sender, EventArgs e)
-        {
-
+            BindingContext = new ContactListMVVM.ViewModels.AddContactViewModel();
         }
     }
 

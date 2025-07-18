@@ -7,30 +7,28 @@
         <VerticalStackLayout
             Padding="30,0"
             Spacing="25">
-            <Label Text="Add Contact" Style="{StaticResource Title}" SemanticProperties.HeadingLevel="Level1" />
+            <Label Text="Add Contact" TextColor="Blue" FontSize="40" HorizontalOptions="Center"/>
 
             <Label Text="Name" TextColor="Black" FontSize="32" HorizontalOptions="Center"/>
-            <Entry Text="{Binding Name}" x:Name="NameEntry" Placeholder="Enter name" HorizontalOptions="Fill" />
-            <Label x:Name="nameError" Text="Name is required!"  TextColor="Red" IsVisible="False" FontSize="14" HorizontalOptions="Center"/>
+            <Entry Text="{Binding Name}" x:Name="NameEntry" Placeholder="Enter name" HorizontalOptions="Fill"/>
+            <Label Text="{Binding NameErrorMessage}"  TextColor="Red" IsVisible="{Binding IsNameErrorVisible}" FontSize="14" HorizontalOptions="Center"/>
 
             
             <Label Text="Email" TextColor="Black" FontSize="32" HorizontalOptions="Center"/>
-            <Entry Text="{Binding Email}" x:Name="EmailEntry" Placeholder="Enter email" Keyboard="Email" HorizontalOptions="Fill" />
-            <Label x:Name="emailError" Text="Email is required!" TextColor="Red" IsVisible="False" FontSize="14" HorizontalOptions="Center"/>
+            <Entry Text="{Binding Email}" x:Name="EmailEntry" Placeholder="Enter email" Keyboard="Email" HorizontalOptions="Fill"/>
+            <Label Text="{Binding EmailErrorMessage}" TextColor="Red" IsVisible="{Binding IsEmailErrorVisible}" FontSize="14" HorizontalOptions="Center"/>   
 
             <Label Text="Phone" TextColor="Black" FontSize="32" HorizontalOptions="Center"/>
-            <Entry Text="{Binding Phone}" x:Name="PhoneEntry" Placeholder="Enter phone number" Keyboard="Telephone" HorizontalOptions="Fill" />
-            <Label x:Name="phoneError" Text="Phone number is required!" TextColor="Red" IsVisible="False" FontSize="14" HorizontalOptions="Center"/>
+            <Entry Text="{Binding PhoneNumber}" x:Name="PhoneEntry" Placeholder="Enter phone number" Keyboard="Telephone" HorizontalOptions="Fill"/>
+            <Label Text="{Binding PhoneNumberErrorMessage}" TextColor="Red" IsVisible="{Binding IsPhoneNumberErrorVisible}" FontSize="14" HorizontalOptions="Center"/>
 
             <Label Text="Description" TextColor="Black" FontSize="32" HorizontalOptions="Center"/>
-            <Editor Text="{Binding Description}" x:Name="DescriptionEditor" Placeholder="Enter description" HeightRequest="100" HorizontalOptions="Fill" />
-            <Label x:Name="descriptionError" Text="Description is required!" TextColor="Red" IsVisible="False" FontSize="14" HorizontalOptions="Center"/>
+            <Editor Text="{Binding Description}" x:Name="DescriptionEditor" Placeholder="Enter description" HeightRequest="100" HorizontalOptions="Fill"/>
+            <Label Text="{Binding DescriptionErrorMessage}" TextColor="Red" IsVisible="{Binding IsDescriptionErrorVisible}" FontSize="14" HorizontalOptions="Center"/>
 
-            <Button
-                x:Name="SaveButton"
-                Text="Save contact" 
-                Clicked="SaveContact"
-                HorizontalOptions="Fill" />
+            <Label Text="{Binding ResultMessage}" TextColor="Green" FontSize="16" HorizontalOptions="Center"/>
+
+            <Button x:Name="SaveButton" Text="Save contact" Command="{Binding AddContactCommand}" HorizontalOptions="Fill"/>
         </VerticalStackLayout>
     </ScrollView>
 
