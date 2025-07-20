@@ -7,11 +7,27 @@ using System.ComponentModel;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using ContactListMVVM.Classes;
 
 namespace ContactListMVVM.ViewModels
 {
     public partial class AddContactViewModel : ObservableObject
     {
+        private ObservableCollection<Classes.Contact> sharedContacts;
+
+        /*
+         * This event is used to notify the view that it should navigate back to the contact list page.
+         * It is invoked when a new contact is successfully added. 
+         * The reason why this is here is to allow the view model to communicate with the view
+         * It acts as a signal or channel that connects to the MapsToContactsRequested method in the view.
+         */
+        public event Action NavigateToContactsRequested;
+
+        public AddContactViewModel(ObservableCollection<Classes.Contact> contacts)
+        {
+            this.sharedContacts = contacts;
+        }
+
         [ObservableProperty]
         private string name;
 
@@ -89,12 +105,22 @@ namespace ContactListMVVM.ViewModels
             }
             // Add the contact
             ContactListMVVM.Classes.Contact newContact = new ContactListMVVM.Classes.Contact(Name, PhoneNumber, Email, Description);
+            sharedContacts.Add(newContact);
             ResultMessage = $"Name: {newContact.Name}\nPhone: {newContact.PhoneNumber}\nEmail: {newContact.Email}\nDescription: {newContact.Description}";
 
             Name = string.Empty;
             PhoneNumber = string.Empty;
             Email = string.Empty;
             Description = string.Empty;
+
+            /*
+             * This line invokes the NavigateToContactsRequested event, which is used to notify the view
+             * that it should navigate back to the contact list page.
+             * The view will handle this event and perform the navigation.
+             * When this is called, the ViewModel is signaling a broadcast to the view that it should navigate to the contacts page.
+             */
+            NavigateToContactsRequested?.Invoke();
+
 
         }
 

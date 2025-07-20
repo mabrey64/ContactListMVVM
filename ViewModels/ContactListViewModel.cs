@@ -1,4 +1,4 @@
-﻿ using System;
+﻿using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -14,17 +14,16 @@ namespace ContactListMVVM.ViewModels
 {
     public partial class ContactListViewModel : ObservableObject
     {
-        [ObservableProperty]
-        public ObservableCollection<AppContact> sharedContacts = new();
+        private ObservableCollection<AppContact> sharedContacts;
+
+        public ContactListViewModel(ObservableCollection<AppContact> contacts)
+        {
+            this.sharedContacts = contacts;
+        }
+
+        public ObservableCollection<AppContact> SharedContacts => sharedContacts;
 
         [ObservableProperty]
         private AppContact contact = new AppContact();
-
-        [RelayCommand]
-        private void Add()
-        {
-            sharedContacts.Add(Contact);
-            Contact = new AppContact();
-        }
     }
 }

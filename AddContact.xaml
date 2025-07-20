@@ -28,7 +28,7 @@
 
             <Label Text="{Binding ResultMessage}" TextColor="Green" FontSize="16" HorizontalOptions="Center"/>
 
-            <Button x:Name="SaveButton" Text="Save contact" Command="{Binding AddContactCommand}" HorizontalOptions="Fill"/>
+            <Button x:Name="SaveButton" Text="Add contact" Command="{Binding AddContactCommand}" HorizontalOptions="Fill"/>
         </VerticalStackLayout>
     </ScrollView>
 

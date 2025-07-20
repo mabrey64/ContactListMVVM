@@ -8,8 +8,13 @@
     Title="ContactListMVVM">
 
     <ShellContent
-        Title="Home"
+        Title="Add Contact"
         ContentTemplate="{DataTemplate local:AddContact}"
-        Route="MainPage" />
+        Route="AddContactPage" />
+    <!--This ShellContent registers the ContactList page with the MAUI Shell navigation. It acts almost like a house address.-->
+    <ShellContent
+        Title="Contact List"
+        ContentTemplate="{DataTemplate local:ContactList}"
+        Route="ContactListPage" />
 
 </Shell>

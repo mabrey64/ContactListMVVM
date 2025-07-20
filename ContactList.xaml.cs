@@ -1,12 +1,24 @@
 using ContactListMVVM;
 using ContactListMVVM.ViewModels;
+using ContactListMVVM.Classes;
+using System.Collections.ObjectModel;
 
-public partial class ContactList : ContentPage
+namespace ContactListMVVM
 {
-    public ContactList()
+    public partial class ContactList : ContentPage
     {
-        InitializeComponent();
-        var sharedContacts = ((App)Application.Current).SharedContacts;
-        BindingContext = new ViewModels.ContactListViewModel(sharedContacts);
+        public ContactList()
+        {
+            InitializeComponent();
+            /*
+             * This is the constructor for the ContactList page.
+             * It initializes the page and sets the BindingContext to an instance of ContactListViewModel,
+             * The reason why we use the BindingContext is to enable data binding in the XAML.
+             * The View's code-behind file (ContactList.xaml.cs) is responsible for setting up the view model
+             * When it creates the ViewModel, it passes the globally shared SharedContacts collection
+             * which is then stored in its own private field.
+             */
+            BindingContext = new ContactListViewModel(App.SharedContacts);
+        }
     }
 }
