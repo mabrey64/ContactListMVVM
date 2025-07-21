@@ -20,5 +20,20 @@ namespace ContactListMVVM
              */
             BindingContext = new ContactListViewModel(App.SharedContacts);
         }
+
+        private async void OnContactTapped(object sender, ItemTappedEventArgs e)
+        {
+            /*
+             * This method is called when an item in the ContactListView is tapped.
+             * It retrieves the tapped contact and navigates to the ContactDetail page,
+             * passing the selected contact as a query parameter.
+             */
+            if (e.Item is ContactListMVVM.Classes.Contact tappedContact)
+            {
+                System.Diagnostics.Debug.WriteLine($"Tapped: {tappedContact.Name}");
+                await Shell.Current.Navigation.PushAsync(new ContactDetailPage(tappedContact));
+                ((ListView)sender).SelectedItem = null; // Deselect after tap
+            }
+        }
     }
 }
