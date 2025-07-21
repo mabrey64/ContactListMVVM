@@ -9,5 +9,9 @@ public partial class ContactDetailPage : ContentPage
 	{ 
 		InitializeComponent();
 		BindingContext = contact;
-}
+	}
+    private async void OnBackClicked(object sender, EventArgs e)
+    {
+        await Navigation.PopAsync();
+    }
 }

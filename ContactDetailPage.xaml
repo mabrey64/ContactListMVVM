@@ -6,7 +6,7 @@
     <VerticalStackLayout>
         <Label Text="Contact Details" FontSize="Title" HorizontalOptions="Center" Margin="0,0,0,15"/>
 
-        <Grid ColumnDefinitions="Auto,*" RowDefinitions="Auto,Auto,Auto,Auto" RowSpacing="5">
+        <Grid ColumnDefinitions="Auto,*" RowDefinitions="Auto,Auto,Auto,Auto,Auto" RowSpacing="5">
             <Label Grid.Row="0" Grid.Column="0" Text="Name:" VerticalOptions="Center"/>
             <Label Grid.Row="0" Grid.Column="1" Text="{Binding Name}" VerticalOptions="Center"/>
             
@@ -18,6 +18,8 @@
 
             <Label Grid.Row="3" Grid.Column="0" Text="Description:" VerticalOptions="Center"/>
             <Label Grid.Row="3" Grid.Column="1" Text="{Binding Description}" VerticalOptions="Center"/>
+
+            <Button Grid.Row="4" Grid.Column="0" Text="Back to Contact List" Clicked="OnBackClicked" />
         </Grid>
     </VerticalStackLayout>
 </ContentPage>

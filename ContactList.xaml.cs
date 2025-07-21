@@ -35,5 +35,10 @@ namespace ContactListMVVM
                 ((ListView)sender).SelectedItem = null; // Deselect after tap
             }
         }
+        private async void OnAddContactClicked(object sender, EventArgs e)
+        {
+            await Navigation.PushAsync(new AddContact());
+        }
+
     }
 }

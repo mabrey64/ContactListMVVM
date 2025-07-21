@@ -6,15 +6,14 @@
     <VerticalStackLayout
     Padding="30,0"
     Spacing="25">
+        <Button Text="Add Contact" Clicked="OnAddContactClicked" />
         <ListView ItemsSource="{Binding SharedContacts}" ItemTapped="OnContactTapped" VerticalOptions="FillAndExpand">
             <ListView.ItemTemplate>
                 <DataTemplate>
                     <ViewCell>
                         <StackLayout Padding="10">
                             <Label Text="{Binding Name}" FontAttributes="Bold" />
-                            <Label Text="{Binding PhoneNumber}" />
                             <Label Text="{Binding Email}" />
-                            <Label Text="{Binding Description}" />
                         </StackLayout>
                     </ViewCell>
                 </DataTemplate>
